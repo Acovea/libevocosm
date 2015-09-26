@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -31,6 +32,59 @@
 //      http://www.coyotegulch.com
 //  
 //-----------------------------------------------------------------------
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+>>>>>>> version 4.0.2
 
 #if !defined(LIBEVOCOSM_FUZZY_MACHINE_H)
 #define LIBEVOCOSM_FUZZY_MACHINE_H
@@ -47,7 +101,11 @@ using namespace std;
 
 // libevocosm
 #include "evocommon.h"
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 #include "fsm_tools.h"
+=======
+#include "machine_tools.h"
+>>>>>>> version 4.0.2
 
 namespace libevocosm
 {
@@ -66,7 +124,11 @@ namespace libevocosm
         \param OutSize Number of output states
     */
     template <size_t InSize, size_t OutSize>
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     class fuzzy_machine : protected globals, protected fsm_tools
+=======
+    class fuzzy_machine : protected globals, protected machine_tools
+>>>>>>> version 4.0.2
     {
     public:
         //! Defines a transition and output state pair
@@ -74,10 +136,17 @@ namespace libevocosm
         {
             //! The state to be transitioned to
             roulette_wheel m_new_state;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
             //! The output value
             roulette_wheel m_output;
             
+=======
+
+            //! The output value
+            roulette_wheel m_output;
+
+>>>>>>> version 4.0.2
             //! Creation Constructor
             tranout_t(double * state_weights, size_t num_states, double * output_weights)
               : m_new_state(state_weights, num_states),
@@ -85,7 +154,11 @@ namespace libevocosm
             {
                 // nada
             }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
+=======
+
+>>>>>>> version 4.0.2
             //! Copy constructor
             tranout_t(const tranout_t & source)
               : m_new_state(source.m_new_state),
@@ -93,7 +166,11 @@ namespace libevocosm
             {
                 // nada
             }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
+=======
+
+>>>>>>> version 4.0.2
             //! Assignment
             tranout_t & operator = (const tranout_t & source)
             {
@@ -171,7 +248,11 @@ namespace libevocosm
             \param a_rate - Chance that any given state will mutate
         */
         void mutate(double a_rate);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Set a mutation weight
         /*!
             Sets the weight value associated with a specific mutation; this changes the
@@ -180,7 +261,11 @@ namespace libevocosm
             \param a_weight - New weight to be assigned
         */
         static void set_mutation_weight(mutation_id a_type, double a_weight);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Cause state transition
         /*!
             Based on an input symbol, this function changes the state of an fuzzy_machine and
@@ -211,7 +296,11 @@ namespace libevocosm
             \return A transition from the internal state table.
         */
         const tranout_t & get_transition(size_t a_state, size_t a_input) const;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Get number of input states
         /*!
             Returns the number of input states
@@ -225,7 +314,11 @@ namespace libevocosm
             \return The number of output states
         */
         size_t num_output_states() const;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Get initial state
         /*!
             Returns the initial (start up) state.
@@ -239,11 +332,19 @@ namespace libevocosm
             \return The current state
         */
         size_t current_state() const;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         //! Get current transition table
         /*!
             Returns the state transition table pointer.
             
+=======
+
+        //! Get current transition table
+        /*!
+            Returns the state transition table pointer.
+
+>>>>>>> version 4.0.2
             This is a very dangerous function, as it gives unrestricted access
             to the transition table that defines a machine. Given the complexity
             of fuzzy state machines, I implemented this function for debugging
@@ -282,6 +383,7 @@ namespace libevocosm
 
         //! base value for output weights
         double m_output_base;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         //! range for output weights
         double m_output_range;
@@ -292,6 +394,18 @@ namespace libevocosm
         //! range for state weights
         double m_state_range;
         
+=======
+
+        //! range for output weights
+        double m_output_range;
+
+        //! base value for state weights
+        double m_state_base;
+
+        //! range for state weights
+        double m_state_range;
+
+>>>>>>> version 4.0.2
         //!  Global mutation selector
         static mutation_selector g_selector;
     };
@@ -308,7 +422,11 @@ namespace libevocosm
         {
             for (size_t i = 0; i < InSize; ++i)
                 delete m_state_table[s][i];
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
+=======
+
+>>>>>>> version 4.0.2
             delete [] m_state_table[s];
         }
 
@@ -359,7 +477,11 @@ namespace libevocosm
         // tables of weights for roulette wheels
         double * output_weights = new double[OutSize];
         double * state_weights  = new double[m_size];
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         for (size_t s = 0; s < m_size; ++s)
         {
             // allocate an array corresponding to inputs
@@ -368,6 +490,7 @@ namespace libevocosm
             for (size_t i = 0; i < InSize; ++i)
             {
                 // define weights
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                 size_t n; 
 
                 for (n = 0; n < OutSize; ++n)
@@ -375,17 +498,34 @@ namespace libevocosm
 
                 for (n = 0; n < m_size; ++n)
                     state_weights[n] = g_random.get_rand_real2() * a_state_range + a_state_base;
+=======
+                size_t n;
+
+                for (n = 0; n < OutSize; ++n)
+                    output_weights[n] = g_random.get_real() * a_output_range + a_output_base;
+
+                for (n = 0; n < m_size; ++n)
+                    state_weights[n] = g_random.get_real() * a_state_range + a_state_base;
+>>>>>>> version 4.0.2
 
                 // set transition values
                 m_state_table[s][i] = new tranout_t(state_weights,m_size,output_weights);
             }
         }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
+=======
+
+>>>>>>> version 4.0.2
         delete [] output_weights;
         delete [] state_weights;
 
         // set initial state and start there
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         m_init_state    = g_random.get_rand_index(m_size);
+=======
+        m_init_state    = rand_index(m_size);
+>>>>>>> version 4.0.2
         m_current_state = m_init_state;
     }
 
@@ -411,7 +551,11 @@ namespace libevocosm
         // tables of weights for roulette wheels
         double * output_weights = new double[OutSize];
         double * state_weights  = new double[m_size];
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         for (size_t s = 0; s < m_size; ++s)
         {
             // allocate an array corresponding to inputs
@@ -420,6 +564,7 @@ namespace libevocosm
             for (size_t i = 0; i < InSize; ++i)
             {
                 // define weights
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                 size_t n; 
 
                 for (n = 0; n < OutSize; ++n)
@@ -431,17 +576,38 @@ namespace libevocosm
                     state_weights[n] = 1.0;
                 
                 state_weights[g_random.get_rand_index(m_size)] = 100.0;
+=======
+                size_t n;
+
+                for (n = 0; n < OutSize; ++n)
+                    output_weights[n] = 1.0;
+
+                output_weights[rand_index(OutSize)] = 100.0;
+
+                for (n = 0; n < m_size; ++n)
+                    state_weights[n] = 1.0;
+
+                state_weights[rand_index(m_size)] = 100.0;
+>>>>>>> version 4.0.2
 
                 // set transition values
                 m_state_table[s][i] = new tranout_t(state_weights,m_size,output_weights);
             }
         }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
+=======
+
+>>>>>>> version 4.0.2
         delete [] output_weights;
         delete [] state_weights;
 
         // set initial state and start there
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         m_init_state = g_random.get_rand_index(m_size);
+=======
+        m_init_state = rand_index(m_size);
+>>>>>>> version 4.0.2
         m_current_state = m_init_state;
     }
 
@@ -471,12 +637,21 @@ namespace libevocosm
             return;
 
         // pick a crossover point
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         size_t x = g_random.get_rand_index(m_size);
         
         #ifdef DEBUG
         cerr << "crossover at " << x << "\n";
         #endif
                 
+=======
+        size_t x = rand_index(m_size);
+
+        #ifdef DEBUG
+        cerr << "crossover at " << x << "\n";
+        #endif
+
+>>>>>>> version 4.0.2
         for (size_t n = x; n < m_size; ++n)
         {
             // set transition values
@@ -488,14 +663,22 @@ namespace libevocosm
         }
 
         // randomize the initial state (looks like mom and dad but may act like either one!)
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         if (g_random.get_rand_real2() < 0.5)
+=======
+        if (g_random.get_real() < 0.5)
+>>>>>>> version 4.0.2
             m_init_state = a_parent1.m_init_state;
         else
             m_init_state = a_parent2.m_init_state;
 
         // reset for start
         m_current_state = m_init_state;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         #ifdef DEBUG
         dump("CHILD");
         #endif
@@ -552,7 +735,11 @@ namespace libevocosm
     {
         g_selector.set_weight(a_type,a_weight);
     }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     //  Mutation
     template <size_t InSize, size_t OutSize>
     void fuzzy_machine<InSize,OutSize>::mutate(double a_rate)
@@ -566,7 +753,11 @@ namespace libevocosm
 
         for (size_t n = 0; n < m_size; ++n)
         {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             if (g_random.get_rand_real2() < a_rate)
+=======
+            if (g_random.get_real() < a_rate)
+>>>>>>> version 4.0.2
             {
                 // pick a mutation
                 switch (g_selector.get_index())
@@ -574,13 +765,20 @@ namespace libevocosm
                     case MUTATE_OUTPUT_SYMBOL:
                     {
                         // mutate output symbol
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         size_t state  = g_random.get_rand_index(m_size);
                         size_t input  = g_random.get_rand_index(InSize);
                         size_t index  = g_random.get_rand_index(OutSize);
+=======
+                        size_t state  = rand_index(m_size);
+                        size_t input  = rand_index(InSize);
+                        size_t index  = rand_index(OutSize);
+>>>>>>> version 4.0.2
 
                         #ifdef DEBUG
                         cerr << "MUTATE_OUTPUT_SYMBOL, state " << state << ", input " << input << ", index " << index << "\n";
                         #endif
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         
                         double new_weight = m_output_base + m_output_range * g_random.get_rand_real3();
                         m_state_table[state][input]->m_output.set_weight(index,new_weight);
@@ -592,24 +790,50 @@ namespace libevocosm
                         size_t state  = g_random.get_rand_index(m_size);
                         size_t input  = g_random.get_rand_index(InSize);
                         size_t index  = g_random.get_rand_index(m_size);
+=======
+
+                        double new_weight = m_output_base + m_output_range * g_random.get_real();
+                        m_state_table[state][input]->m_output.set_weight(index,new_weight);
+                        break;
+                    }
+                    case MUTATE_TRANSITION:
+                    {
+                        // mutate state transition
+                        size_t state  = rand_index(m_size);
+                        size_t input  = rand_index(InSize);
+                        size_t index  = rand_index(m_size);
+>>>>>>> version 4.0.2
 
                         #ifdef DEBUG
                         cerr << "MUTATE_TRANSITION, state " << state << ", input " << input << ", index " << index << "\n";
                         #endif
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         
                         double new_weight = m_state_base + m_state_range * g_random.get_rand_real3();
+=======
+
+                        double new_weight = m_state_base + m_state_range * g_random.get_real();
+>>>>>>> version 4.0.2
                         m_state_table[state][input]->m_new_state.set_weight(index,new_weight);
                         break;
                     }
                     case MUTATE_REPLACE_STATE:
                     {
                         // select mutated state
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         size_t state  = g_random.get_rand_index(m_size);
+=======
+                        size_t state  = rand_index(m_size);
+>>>>>>> version 4.0.2
 
                         #ifdef DEBUG
                         cerr << "REPLACE_STATE, state " << state << "\n";
                         #endif
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         
+=======
+
+>>>>>>> version 4.0.2
                         // allocate an array corresponding to inputs
                         delete [] m_state_table[state];
                         m_state_table[state] = new tranout_t * [InSize];
@@ -621,17 +845,30 @@ namespace libevocosm
                         for (size_t i = 0; i < InSize; ++i)
                         {
                             // define weights
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                             size_t n; 
 
                             for (n = 0; n < OutSize; ++n)
                                 output_weights[n] = 1.0; 
 
                             output_weights[g_random.get_rand_index(OutSize)] = 100.0;
+=======
+                            size_t n;
+
+                            for (n = 0; n < OutSize; ++n)
+                                output_weights[n] = 1.0;
+
+                            output_weights[rand_index(OutSize)] = 100.0;
+>>>>>>> version 4.0.2
 
                             for (n = 0; n < m_size; ++n)
                                 state_weights[n] = 1.0;
 
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                             state_weights[g_random.get_rand_index(m_size)] = 100.0;
+=======
+                            state_weights[rand_index(m_size)] = 100.0;
+>>>>>>> version 4.0.2
 
                             // set transition values
                             m_state_table[state][i] = new tranout_t(state_weights,m_size,output_weights);
@@ -640,11 +877,16 @@ namespace libevocosm
                         delete [] output_weights;
                         delete [] state_weights;
 
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         break;                        
+=======
+                        break;
+>>>>>>> version 4.0.2
                     }
                     case MUTATE_SWAP_STATES:
                     {
                         // swap two states (by swapping pointers)
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         size_t state1 = g_random.get_rand_index(m_size);
                         size_t state2;
             
@@ -656,6 +898,19 @@ namespace libevocosm
                         cerr << "MUTATE_SWAP_STATES, " << state1 << " with " << state2 << "\n";
                         #endif
             
+=======
+                        size_t state1 = rand_index(m_size);
+                        size_t state2;
+
+                        do
+                            state2 = static_cast<size_t>(rand_index(m_size));
+                        while (state2 == state1);
+
+                        #ifdef DEBUG
+                        cerr << "MUTATE_SWAP_STATES, " << state1 << " with " << state2 << "\n";
+                        #endif
+
+>>>>>>> version 4.0.2
                         for (size_t i = 0; i < InSize; ++i)
                         {
                             tranout_t * temp         = m_state_table[state1][i];
@@ -664,14 +919,22 @@ namespace libevocosm
                         }
 
                         break;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                     }    
+=======
+                    }
+>>>>>>> version 4.0.2
                     case MUTATE_INIT_STATE:
                     {
                         // change initial state
                         #ifdef DEBUG
                         cerr << "MUTATE_INIT_STATE\n";
                         #endif
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                         m_init_state  = g_random.get_rand_index(m_size);
+=======
+                        m_init_state  = rand_index(m_size);
+>>>>>>> version 4.0.2
                         break;
                     }
                     #ifdef DEBUG
@@ -681,9 +944,15 @@ namespace libevocosm
                 }
             }
         }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         // reset current state because init state may have changed
         
+=======
+
+        // reset current state because init state may have changed
+
+>>>>>>> version 4.0.2
         m_current_state = m_init_state;
         #ifdef DEBUG
         dump("AFTER");
@@ -738,7 +1007,11 @@ namespace libevocosm
     {
         return OutSize;
     }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
     //  Get initial state
     template <size_t InSize, size_t OutSize>
     inline size_t fuzzy_machine<InSize,OutSize>::init_state() const
@@ -752,7 +1025,11 @@ namespace libevocosm
     {
         return m_current_state;
     }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     #ifdef DEBUG
     template <size_t InSize, size_t OutSize>
     void fuzzy_machine<InSize,OutSize>::dump(const char * description, ostream & a_stream) const
@@ -760,6 +1037,7 @@ namespace libevocosm
         a_stream << "----------\nDumping machine " << description << " (" << hex << this
                  << ")\ninitial state = " << m_init_state
                  << "\ncurrent state = " << m_current_state << "\n\n";
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         for (size_t s = 0; s < m_size; ++s)
         {
@@ -771,10 +1049,24 @@ namespace libevocosm
                 
                 a_stream << "\n  output weights:";
                 
+=======
+
+        for (size_t s = 0; s < m_size; ++s)
+        {
+            a_stream << "state " << s;
+
+            for (size_t i = 0; i < InSize; ++i)
+            {
+                size_t n;
+
+                a_stream << "\n  output weights:";
+
+>>>>>>> version 4.0.2
                 for (n = 0; n < OutSize; ++n)
                     a_stream << " " << m_state_table[s][i]->m_output.get_weight(n);
 
                 a_stream << "\n  state  weights:";
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                 
                 for (n = 0; n < m_size; ++n)
                     a_stream << " " << m_state_table[s][i]->m_new_state.get_weight(n);
@@ -786,6 +1078,19 @@ namespace libevocosm
         a_stream << "----------" << endl;
     }
     #endif    
+=======
+
+                for (n = 0; n < m_size; ++n)
+                    a_stream << " " << m_state_table[s][i]->m_new_state.get_weight(n);
+
+                a_stream << endl;
+            }
+        }
+
+        a_stream << "----------" << endl;
+    }
+    #endif
+>>>>>>> version 4.0.2
 };
 
 #endif

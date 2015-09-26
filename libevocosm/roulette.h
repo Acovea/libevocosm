@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -31,6 +32,59 @@
 //      http://www.coyotegulch.com
 //  
 //-----------------------------------------------------------------------
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+>>>>>>> version 4.0.2
 
 #if !defined(LIBEVOCOSM_ROULETTE_H)
 #define LIBEVOCOSM_ROULETTE_H
@@ -55,7 +109,11 @@ namespace libevocosm
         tosses an marble into the bowl in the direction opposite to that in
         which the wheel is moving; when the motion of the wheel ceases, the ball
         comes to rest in one of the numbered sections.
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         As an algorithm, a roulette wheel is an array of weights, and the marble
         is a random integer less than the sum of all weights in the population.
         To pick on of the "section" (in this case, an index), the algorithm
@@ -81,7 +139,11 @@ namespace libevocosm
         roulette_wheel(const vector<double> & a_weights,
                        double a_min_weight = std::numeric_limits<double>::epsilon(),
                        double a_max_weight = std::numeric_limits<double>::max());
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Creation constructor (from c-type array)
         /*!
             Creates a new roulette_wheel based on a set of weights.
@@ -94,27 +156,43 @@ namespace libevocosm
                        size_t a_length,
                        double a_min_weight = std::numeric_limits<double>::epsilon(),
                        double a_max_weight = std::numeric_limits<double>::max());
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Copy constructor
         /*!
             Creates a new roulette_wheel from an existing one.
             \param a_source - The source object
         */
         roulette_wheel(const roulette_wheel & a_source);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Assignment operator
         /*!
             Assigns a roulette_wheel the state of another.
             \param a_source - The source object
         */
         roulette_wheel & operator = (const roulette_wheel & a_source);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Destructor
         /*!
             Destroys a roulette_wheel, freeing resources.
         */
         ~roulette_wheel();
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Get size (number of weights)
         /*!
             Gets the number of weights indexed by the roulette wheel.
@@ -133,7 +211,11 @@ namespace libevocosm
             \return Previous weight for this index, or -1 if a_index is invalid
         */
         double set_weight(size_t a_index, double a_weight);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Get the weight for an index
         /*!
             Gets the weight assigned to a specific index.
@@ -141,7 +223,11 @@ namespace libevocosm
             \return Weight for this index, or -1 if a_index is invalid
         */
         double get_weight(size_t a_index) const;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Retrieve a random index
         /*!
             Returns a randomly-selected index value by simulating the
@@ -150,13 +236,18 @@ namespace libevocosm
             \return A random index value
         */
         size_t get_index() const;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
     protected:
         //! Number of weights in this wheel
         size_t m_size;
 
         //! Array of m_weights
         double * m_weights;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         //! Total weight of all indexes
         double m_total_weight;
@@ -164,6 +255,15 @@ namespace libevocosm
         //! Minimum possible weight value
         double m_min_weight;
         
+=======
+
+        //! Total weight of all indexes
+        double m_total_weight;
+
+        //! Minimum possible weight value
+        double m_min_weight;
+
+>>>>>>> version 4.0.2
         //! Maximum possible weight value
         double m_max_weight;
 

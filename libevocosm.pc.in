@@ -4,9 +4,15 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: @GENERIC_LIBRARY_NAME@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 Description: A framew3ork for evolutionary algorithms
 Author: Scott Robert Ladd
 URL: http://www.coyotegulch.com/libevocosm
+=======
+Description: A C++ framework for creating evolutionary algorithms
+Author: Scott Robert Ladd
+URL: http://www.coyotegulch.com/products/evocosm
+>>>>>>> version 4.0.2
 Version: @VERSION@
 Libs: -L${libdir} -l@GENERIC_LIBRARY_NAME
 Cflags: -I${includedir}/@GENERIC_LIBRARY_NAME@ -I${libdir}/@GENERIC_LIBRARY_NAME@/include

@@ -57,7 +57,10 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 #include <vector>
+=======
+>>>>>>> version 4.0.2
 
 // Windows
 #if defined(_MSC_VER)
@@ -66,8 +69,11 @@
 #undef min
 #endif
 
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 using std::vector;
 
+=======
+>>>>>>> version 4.0.2
 namespace libevocosm
 {
     template<typename T> class population;

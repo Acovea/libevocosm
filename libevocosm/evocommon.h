@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -47,6 +48,119 @@
 
 namespace libevocosm
 {
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+
+#if !defined(LIBEVOCOSM_EVOCOMMON_H)
+#define LIBEVOCOSM_EVOCOMMON_H
+
+// Brahe library
+#include "libbrahe/prng.h"
+
+// Standard C++ Library
+#include <string>
+
+namespace libevocosm
+{
+    //! The random number generator used by Evocosm
+    /*!
+        This class encapsulates the random number generator used by the
+        Evocosm classes.
+    */
+    class prng
+    {
+    private:
+        brahe_prng_state_t m_random;
+
+    public:
+        //! Constructor
+        prng()
+        {
+            brahe_prng_init(&m_random,BRAHE_PRNG_MWC1038,0);
+        }
+
+        //! Destructor
+        ~prng()
+        {
+            brahe_prng_free(&m_random);
+        }
+
+        //! Set the seed for the random number generator
+        void set_seed(uint32_t a_seed)
+        {
+            brahe_prng_init(&m_random,BRAHE_PRNG_MWC1038,a_seed);
+        }
+
+        //! get seed value
+        uint32_t get_seed()
+        {
+            return m_random.m_seed;
+        }
+
+        //! get a random index value
+        size_t get_index(size_t n)
+        {
+            return brahe_prng_index(&m_random,n);
+        }
+
+        //! get the next value in the range [0,1)
+        double get_real()
+        {
+            return brahe_prng_real2(&m_random);
+        }
+    };
+
+>>>>>>> version 4.0.2
     //! Elements shared by all classes in Evocosm
     /*!
         All Evocosm classes are derived from this class, a singleton for shared
@@ -58,6 +172,7 @@ namespace libevocosm
         //! Static function to allow use of g_random function pointer in random_shuffle
         static size_t rand_index(size_t n)
         {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             return g_random.get_rand_index(n);
         }
 
@@ -72,6 +187,22 @@ namespace libevocosm
         static void set_random_seed(uint32_t a_seed)
         {
             g_random.init(a_seed);
+=======
+            return g_random.get_index(n);
+        }
+
+        //! A shared random number generator
+        static prng g_random;
+
+        //! Version number
+        static std::string g_version;
+
+    public:
+        //! Set the seed for the random number generator
+        static void set_seed(uint32_t a_seed)
+        {
+            g_random.set_seed(a_seed);
+>>>>>>> version 4.0.2
         }
 
         //! Set the seed for the random number generator
@@ -79,13 +210,18 @@ namespace libevocosm
         {
             return g_random.get_seed();
         }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         //! Get version number
         static std::string version()
         {
             return g_version;
         }
     };
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
     //! An abstract interface defining a listener
     /*!
@@ -409,6 +545,9 @@ namespace libevocosm
             }
     };
     
+=======
+
+>>>>>>> version 4.0.2
 }
 
 #endif

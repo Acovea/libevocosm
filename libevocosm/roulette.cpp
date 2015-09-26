@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Roulette Wheel -- A Tool for Weighted Selection
@@ -42,6 +43,65 @@
 using namespace libcoyotl;
 
 // libevocosm
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+
+#include <stdexcept>
+#include <cstring>
+
+// libevocosm
+#include "validator.h"
+>>>>>>> version 4.0.2
 #include "roulette.h"
 using namespace libevocosm;
 
@@ -61,13 +121,21 @@ roulette_wheel::roulette_wheel(const vector<double> & a_weights, double a_min_we
     for (size_t i = 0; i < m_size; ++i)
     {
         m_weights[i]   = fabs(a_weights[i]);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         if (m_weights[i] < m_min_weight)
             m_weights[i] = m_min_weight;
         else
             if (m_weights[i] > m_max_weight)
                 m_weights[i] = m_max_weight;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         m_total_weight += m_weights[i];
     }
 
@@ -85,19 +153,31 @@ roulette_wheel::roulette_wheel(const double * a_weights, size_t a_size, double a
     validate_not(m_size,size_t(0),"Roulette wheel can not have zero size");
     validate_less(m_min_weight,m_max_weight,"Minimum weight must be less than maximum");
     validate_greater(m_min_weight,0.0,"Minimum weight must be > 0");
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     m_weights = new double[m_size];
 
     for (size_t i = 0; i < m_size; ++i)
     {
         m_weights[i]   = fabs(a_weights[i]);
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         if (m_weights[i] < m_min_weight)
             m_weights[i] = m_min_weight;
         else
             if (m_weights[i] > m_max_weight)
                 m_weights[i] = m_max_weight;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
+=======
+
+>>>>>>> version 4.0.2
         m_total_weight += m_weights[i];
     }
 
@@ -128,7 +208,11 @@ roulette_wheel & roulette_wheel::operator = (const roulette_wheel & a_source)
         m_min_weight   = a_source.m_min_weight;
         m_max_weight   = a_source.m_max_weight;
     }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     return *this;
 }
 
@@ -142,7 +226,11 @@ roulette_wheel::~roulette_wheel()
 double roulette_wheel::set_weight(size_t a_index, double a_weight)
 {
     validate_less(a_index,m_size,"invalid roulette wheel index");
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     a_weight = fabs(a_weight);
 
     if (a_weight < m_min_weight)
@@ -150,10 +238,17 @@ double roulette_wheel::set_weight(size_t a_index, double a_weight)
     else
         if (a_weight > m_max_weight)
             a_weight = m_max_weight;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
     m_total_weight -= m_weights[a_index];
     m_total_weight += a_weight;
     
+=======
+
+    m_total_weight -= m_weights[a_index];
+    m_total_weight += a_weight;
+
+>>>>>>> version 4.0.2
     double res = m_weights[a_index];
     m_weights[a_index] = a_weight;
 
@@ -170,16 +265,27 @@ double roulette_wheel::get_weight(size_t a_index) const
 // retrieve a random index
 size_t roulette_wheel::get_index() const
 {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     double choice = g_random.get_rand_real2() * m_total_weight;
 
     size_t i = 0;
     
+=======
+    double choice = g_random.get_real() * m_total_weight;
+
+    size_t i = 0;
+
+>>>>>>> version 4.0.2
     while ((i < m_size) && (choice > m_weights[i]))
     {
         choice -= m_weights[i];
         ++i;
     }
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     return i;
 }
 

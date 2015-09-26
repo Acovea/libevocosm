@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -44,6 +45,66 @@
 
 // libevocosm
 #include "organism.h"
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+
+#if !defined(LIBEVOCOSM_SCALER_H)
+#define LIBEVOCOSM_SCALER_H
+
+// libevocosm
+#include "organism.h"
+#include "stats.h"
+>>>>>>> version 4.0.2
 
 namespace libevocosm
 {
@@ -81,6 +142,7 @@ namespace libevocosm
             \param a_population - A population of organisms
         */
         virtual void scale_fitness(vector<OrganismType> & a_population) = 0;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         
         //! Invert a population's fitness values
         /*!
@@ -94,6 +156,8 @@ namespace libevocosm
             for (typename vector<OrganismType>::iterator organism = a_population.begin(); organism != a_population.end(); ++organism)
                organism->fitness() = base - organism->fitness();
         }                
+=======
+>>>>>>> version 4.0.2
     };
 
     //! A do-nothing scaler
@@ -145,6 +209,7 @@ namespace libevocosm
         virtual void scale_fitness(vector<OrganismType> & a_population)
         {
             // calculate max, average, and minimum fitness for the population
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             double max_fitness = std::numeric_limits<double>::min();
             double min_fitness = std::numeric_limits<double>::max();
             double avg_fitness = 0.0;
@@ -165,10 +230,15 @@ namespace libevocosm
             
             avg_fitness /= double(a_population.size());
             
+=======
+            fitness_stats<OrganismType> stats(a_population);
+
+>>>>>>> version 4.0.2
             // calculate coefficients for fitness scaling
             double slope;
             double intercept;
             double delta;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
             if (min_fitness > ((m_fitness_multiple * avg_fitness - max_fitness) / (m_fitness_multiple - 1.0)))
             {
@@ -176,10 +246,20 @@ namespace libevocosm
                 delta = max_fitness - avg_fitness;
                 slope = (m_fitness_multiple - 1.0) * avg_fitness / delta;
                 intercept = avg_fitness * (max_fitness - m_fitness_multiple * avg_fitness) / delta;
+=======
+
+            if (stats.getMin() > ((m_fitness_multiple * stats.getMean() - stats.getMax()) / (m_fitness_multiple - 1.0)))
+            {
+                // normal scaling
+                delta = stats.getMax() - stats.getMean();
+                slope = (m_fitness_multiple - 1.0) * stats.getMean() / delta;
+                intercept = stats.getMean() * (stats.getMax() - m_fitness_multiple * stats.getMean()) / delta;
+>>>>>>> version 4.0.2
             }
             else
             {
                 // extreme scaling
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
                 delta = avg_fitness - min_fitness;
                 slope = avg_fitness / delta;
                 intercept = -min_fitness * avg_fitness / delta;
@@ -190,6 +270,18 @@ namespace libevocosm
                 org->fitness() = slope * org->fitness() + intercept;
         }
         
+=======
+                delta = stats.getMean() - stats.getMin();
+                slope = stats.getMean() / delta;
+                intercept = -stats.getMin() * stats.getMean() / delta;
+            }
+
+            // adjust fitness values
+            for (int n = 0; n < a_population.size(); ++n)
+                a_population[n].fitness = slope * a_population[n].fitness + intercept;
+        }
+
+>>>>>>> version 4.0.2
     private:
         double m_fitness_multiple;
     };
@@ -220,6 +312,7 @@ namespace libevocosm
         */
         virtual void scale_fitness(vector<OrganismType> & a_population)
         {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             // Find minimum fitness
             // Note that organisms sort in reverse order of fitness, such that
             // the "maximum" value has the smallest fitness.
@@ -231,6 +324,16 @@ namespace libevocosm
         }
     };
     
+=======
+            fitness_stats<OrganismType> stats(a_population);
+
+            // assign new fitness values
+            for (int n = 0; n < a_population.size(); ++n)
+                a_population[n].fitness = stats.getMin();
+        }
+    };
+
+>>>>>>> version 4.0.2
     //! An exponential fitness scaler
     /*!
         Implements an exponential fitness scaling, whereby all fitness values are modified
@@ -265,8 +368,13 @@ namespace libevocosm
         virtual void scale_fitness(vector<OrganismType> & a_population)
         {
             // assign new fitness values
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             for (typename vector<OrganismType>::iterator org = a_population.begin(); org != a_population.end(); ++org)
                 org->fitness() = pow((m_a * org->fitness() + m_b),m_power);
+=======
+            for (int n = 0; n < a_population.size(); ++n)
+                a_population[n].fitness = pow((m_a * a_population[n].fitness + m_b),m_power);
+>>>>>>> version 4.0.2
         }
 
     private:
@@ -274,7 +382,11 @@ namespace libevocosm
         double m_b;
         double m_power;
     };
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
+=======
+
+>>>>>>> version 4.0.2
     //! A quadratic scaler
     /*!
         Uses a quadratic equation to scale the fitness of organisms.
@@ -302,6 +414,7 @@ namespace libevocosm
         virtual void scale_fitness(vector<OrganismType> & a_population)
         {
             // adjust fitness values
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             for (typename vector<OrganismType>::iterator org = a_population.begin(); org != a_population.end(); ++org)
             {
                 double f = org->fitness();
@@ -309,6 +422,15 @@ namespace libevocosm
             }
         }
         
+=======
+            for (int n = 0; n < a_population.size(); ++n)
+            {
+                double f = a_population[n].fitness;
+                a_population[n].fitness = m_a * pow(f,2.0) + m_b * f + m_c;
+            }
+        }
+
+>>>>>>> version 4.0.2
     private:
         double m_a;
         double m_b;
@@ -342,6 +464,7 @@ namespace libevocosm
         */
         virtual void scale_fitness(vector<OrganismType> & a_population)
         {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             // calculate the mean
             double mean = 0.0;
             for (typename vector<OrganismType>::iterator org = a_population.begin(); org != a_population.end(); ++org)
@@ -378,6 +501,29 @@ namespace libevocosm
                     // avoid tiny or zero fitness value; everyone gets to reproduce
                     if (org->fitness() < 0.1)
                         org->fitness() = 0.1;
+=======
+            fitness_stats<OrganismType> stats(a_population);
+
+            // calculate 2 times the std. deviation (sigma)
+            double sigma2 = 2.0 * stats.getSigma();
+
+            // now assign new fitness values
+            if (sigma2 == 0.0)
+            {
+                for (int n = 0; n < a_population.size(); ++n)
+                    a_population[n].fitness = 1.0;
+            }
+            else
+            {
+                for (int n = 0; n < a_population.size(); ++n)
+                {
+                    // change fitness
+                    a_population[n].fitness = (1.0 + a_population[n].fitness / stats.mean) / sigma2;
+
+                    // avoid tiny or zero fitness value; everyone gets to reproduce
+                    if (a_population[n].fitness < 0.1)
+                        a_population[n].fitness = 0.1;
+>>>>>>> version 4.0.2
                 }
             }
         }

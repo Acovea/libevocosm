@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -31,6 +32,59 @@
 //      http://www.coyotegulch.com
 //  
 //-----------------------------------------------------------------------
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+>>>>>>> version 4.0.2
 
 #if !defined(LIBEVOCOSM_EVOCOSM_H)
 #define LIBEVOCOSM_EVOCOSM_H
@@ -46,15 +100,22 @@
 // Standard C++ library
 #include <vector>
 
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 // libcoyotl
 #include "libcoyotl/validator.h"
 
 // libevocosm
+=======
+// libevocosm
+#include "validator.h"
+#include "listener.h"
+>>>>>>> version 4.0.2
 #include "organism.h"
 #include "landscape.h"
 #include "mutator.h"
 #include "reproducer.h"
 #include "scaler.h"
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 #include "migrator.h"
 #include "selector.h"
 #include "reporter.h"
@@ -62,6 +123,14 @@
 //! A toolkit and framework for implementing evolutionary algorithms.
 /*!
     Evocosm is a set of classes that abstract the fundamental components of an
+=======
+#include "selector.h"
+#include "analyzer.h"
+
+//! A toolkit and framework for implementing evolutionary algorithms.
+/*!
+    Evocosm classes abstract the fundamental components of an
+>>>>>>> version 4.0.2
     evolutionary algorithm. Evolutionary algorithms come in a variety of shapes
     and flavors, but at their core, they all share certain characteristics:
     populations that reproduce and mutate through a series of generations,
@@ -72,6 +141,7 @@
 namespace libevocosm
 {
     using std::vector;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
     //! Interface for an organism factory
     /*!
@@ -111,6 +181,8 @@ namespace libevocosm
         */
         virtual LandscapeType generate() = 0;
     };
+=======
+>>>>>>> version 4.0.2
 
     //! Associates organisms with the components of an evolutionary system.
     /*!
@@ -118,6 +190,7 @@ namespace libevocosm
         evocosm of organisms to a set of objects that define how
         those organisms evolve.
         \param OrganismType - The type of organism
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         \param LandscapeType - The type of landscape
     */
     template <class OrganismType, class LandscapeType>
@@ -150,11 +223,27 @@ namespace libevocosm
         
         //! A mutator to randomly influence genes
         mutator<OrganismType>    & m_mutator;
+=======
+    */
+    template <class OrganismType>
+    class evocosm : protected globals
+    {
+    protected:
+        //! The populations of organisms
+        vector<OrganismType> & m_population;
+
+        //! Fitness landscapes common to all populations
+        landscape<OrganismType> & m_landscape;
+
+        //! A mutator to randomly influence genes
+        mutator<OrganismType> & m_mutator;
+>>>>>>> version 4.0.2
 
         //! Creates new organisms
         reproducer<OrganismType> & m_reproducer;
 
         //! Scales the fitness of the evocosm
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         scaler<OrganismType>     & m_scaler;
 
         //! Handles emigration and immigration
@@ -174,11 +263,30 @@ namespace libevocosm
         
         //! termination flag
         bool                       m_running;
+=======
+        scaler<OrganismType> & m_scaler;
+
+        //! Selects organisms that survive from one generation to the next
+        selector<OrganismType> & m_selector;
+
+        //! Reports the a evocosm for analysis or display
+        analyzer<OrganismType> & m_analyzer;
+
+        //! A listener for evocosm progress
+        listener<OrganismType> & m_listener;
+
+        //! Count of iterations made
+        size_t m_iteration;
+
+        //! Number microseconds for process to sleep on yield
+        unsigned int m_sleep_time;
+>>>>>>> version 4.0.2
 
     public:
         //! Creation constructor
         /*!
             Creates a new evocosm. Think of an evocosm as a director, a tool for
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             associating organisms with their environment.
             Note that these arguments are modifiable references, and that the
             referenced objects must continue to exist during the lifetime of the
@@ -212,13 +320,40 @@ namespace libevocosm
                 organism_factory<OrganismType>   & a_organism_factory,
                 landscape_factory<LandscapeType> & a_landscape_factory,
                 bool                       a_minimizing = false);
+=======
+            associating organisms with their landscape.
+            Note that these arguments are modifiable references, and that the
+            referenced objects must continue to exist during the lifetime of the
+            evocosm.
+            \param a_population Initial population of organisms
+            \param a_landscape Initial set of landscaoes for testing organism fitness
+            \param a_mutator - A concrete implementation of mutator
+            \param a_reproducer - A concrete implementation of reproducer
+            \param a_scaler - A concrete implementation of scaler
+            \param a_selector - A concrete implementation of selector
+            \param a_analyzer - A concrete implementation of analyzer
+            \param a_listener - a listener for events
+        */
+        evocosm(vector<OrganismType> &     a_population,
+                landscape<OrganismType> &  a_landscape,
+                mutator<OrganismType> &    a_mutator,
+                reproducer<OrganismType> & a_reproducer,
+                scaler<OrganismType> &     a_scaler,
+                selector<OrganismType> &   a_selector,
+                analyzer<OrganismType> &   a_analyzer,
+                listener<OrganismType> &   a_listener);
+>>>>>>> version 4.0.2
 
         //! Copy constructor
         /*!
             Creates a new evocosm identical to an existing one.
             \param a_source - The source object
         */
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         evocosm(const evocosm<OrganismType, LandscapeType> & a_source);
+=======
+        evocosm(const evocosm<OrganismType> & a_source);
+>>>>>>> version 4.0.2
 
         //! Virtual destructor
         /*!
@@ -236,11 +371,16 @@ namespace libevocosm
             \param a_source - The source object
             \return Reference to target object
         */
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         evocosm & operator = (const evocosm<OrganismType, LandscapeType> & a_source);
+=======
+        evocosm & operator = (const evocosm<OrganismType> & a_source);
+>>>>>>> version 4.0.2
 
         //! Compute next generation
         /*!
             A generation represents a cycle in the life of an evocosm; this
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             function performs one sequence of fitness testing & scaling,        void append(vector<gccga_organism> a_population, size_t a_size);
 
             reporting, migration, breeding, and mutation. This method can be
@@ -250,12 +390,23 @@ namespace libevocosm
             \return Returns <i>false</i> when the generation has reached a specific goal.
         */
         virtual bool run_generation(bool a_finished, double & a_fitness);
+=======
+            function performs one sequence of fitness testing & scaling,
+            reporting, breeding, and mutation. This method can be
+            replaced by in a derived class to define a different processing
+            sequence; the default sequence defined here is good for most
+            evolutionary algorithms I've created.
+            \return Returns <i>true</i> when the generation has reached a specific goal.
+        */
+        virtual bool run_generation();
+>>>>>>> version 4.0.2
 
         //! Directly view population
         /*! <b>Use with caution!</b> This function provides direct read-write
             access to an evocosm's population. This is necessary when the
             organisms need special manipulation, such as when they can not be
             randomized by a default constructor.
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             \param a_index Number of the population to return; defaults to 0 .
         */
         vector<OrganismType, LandscapeType> & population(size_t a_index = 0)
@@ -352,18 +503,110 @@ namespace libevocosm
         m_migrator(a_source.m_migrator),
         m_selector(a_source.m_selector),
         m_iteration(a_source.m_iteration)
+=======
+        */
+        vector<OrganismType> & get_population()
+        {
+            return m_population;
+        }
+
+        //! Get the sleep time property value
+        /*!
+            Get the sleep time setting for this listerner.
+            /return current value of sleep time (microseconds)
+        */
+        unsigned int get_sleep_time()
+        {
+            return m_sleep_time;
+        }
+
+        //! Set the sleep time property value
+        /*!
+            Set the sleep time property value.
+            /param a_sleep_time new value of sleep time (microseconds)
+        */
+        void set_sleep_time(unsigned int a_sleep_time)
+        {
+            m_sleep_time = a_sleep_time;
+        }
+
+    protected:
+        //! Yield
+        /*!
+            Evocosm periodically invokes this function to allow other processes
+            to run. In most cases, this will be some sort of platform-specific
+            sleep function, such as usleep.
+        */
+        void yield()
+        {
+            if (m_sleep_time > 0)
+            {
+              #if defined(_MSC_VER)
+                Sleep(m_sleep_time);
+              #else
+                usleep((useconds_t)m_sleep_time);
+              #endif
+            }
+        }
+
+    };
+
+    // constructors
+    template <class OrganismType>
+    evocosm<OrganismType>::evocosm(vector<OrganismType> &     a_population,
+                                   landscape<OrganismType> &  a_landscape,
+                                   mutator<OrganismType> &    a_mutator,
+                                   reproducer<OrganismType> & a_reproducer,
+                                   scaler<OrganismType> &     a_scaler,
+                                   selector<OrganismType> &   a_selector,
+                                   analyzer<OrganismType> &   a_analyzer,
+                                   listener<OrganismType> &   a_listener)
+      : m_population(a_population),
+        m_landscape(a_landscape),
+        m_mutator(a_mutator),
+        m_reproducer(a_reproducer),
+        m_scaler(a_scaler),
+        m_selector(a_selector),
+        m_analyzer(a_analyzer),
+        m_listener(a_listener),
+        m_iteration(0),
+        m_sleep_time(10000) // default to 10ms sleep time
+    {
+        // nada
+    }
+
+    // copy constructor
+    template <class OrganismType>
+    evocosm<OrganismType>::evocosm(const evocosm<OrganismType> & a_source)
+      : m_population(a_source.a_population),
+        m_landscape(a_source.m_landscape),
+        m_mutator(a_source.m_mutator),
+        m_reproducer(a_source.m_reproducer),
+        m_scaler(a_source.m_scaler),
+        m_selector(a_source.m_selector),
+        m_analyzer(a_source.m_analyzer),
+        m_listener(a_source.m_listener),
+        m_iteration(a_source.m_iteration),
+        m_sleep_time(a_source.m_sleep_time)
+>>>>>>> version 4.0.2
     {
         // nada
     }
 
     // destructor
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     template <class OrganismType, class LandscapeType>
     evocosm<OrganismType, LandscapeType>::~evocosm()
+=======
+    template <class OrganismType>
+    evocosm<OrganismType>::~evocosm()
+>>>>>>> version 4.0.2
     {
         // nada
     }
 
     // assignment operator
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     template <class OrganismType, class LandscapeType>
     evocosm<OrganismType, LandscapeType> & evocosm<OrganismType, LandscapeType>::operator = (const evocosm<OrganismType, LandscapeType> & a_source)
     {
@@ -383,11 +626,24 @@ namespace libevocosm
         m_selector    = a_source.m_selector;
         
         m_iteration   = a_source.m_iteration;
+=======
+    template <class OrganismType>
+    evocosm<OrganismType> & evocosm<OrganismType>::operator = (const evocosm<OrganismType> & a_source)
+    {
+        m_population  = a_source.m_population;
+        m_landscape   = a_source.m_landscape;
+        m_scaler      = a_source.m_scaler;
+        m_analyzer    = a_source.m_analyzer;
+        m_listener    = a_source.m_analyzer;
+        m_iteration   = a_source.m_iteration;
+        m_sleep_time  = a_source.m_sleep_time;
+>>>>>>> version 4.0.2
 
         return *this;
     }
 
     // compute next generation
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     template <class OrganismType, class LandscapeType>
     bool evocosm<OrganismType, LandscapeType>::run_generation(bool a_finished, double & a_fitness)
     {
@@ -500,6 +756,64 @@ namespace libevocosm
         m_listener.yield();
 
         return keep_going & m_running;
+=======
+    template <class OrganismType>
+    bool evocosm<OrganismType>::run_generation()
+    {
+        bool keep_going = true;
+
+        OrganismType * best = NULL;
+
+        ++m_iteration;
+
+        // announce beginning of new generation
+        m_listener.ping_generation_begin(m_population, m_iteration);
+
+        // check population fitness
+        m_landscape.test(m_population);
+        yield();
+
+        // we're done testing this generation
+        m_listener.ping_generation_end(m_population, m_iteration);
+        yield();
+
+        // analyze the results of testing, and decide if we're going to stop or not
+        keep_going = m_analyzer.analyze(m_population, m_iteration);
+
+        if (keep_going)
+        {
+            // fitness scaling
+            m_scaler.scale_fitness(m_population);
+            yield();
+
+            // get survivors and number of chromosomes to add
+            vector<OrganismType> survivors = m_selector.select_survivors(m_population);
+            yield();
+
+            // give birth to new chromosomes
+            vector<OrganismType> children = m_reproducer.breed(m_population, m_population.size() - survivors.size());
+            yield();
+
+            // debugging only
+            //fitness_stats<OrganismType> s(survivors);
+            //fitness_stats<OrganismType> c(children);
+
+            // mutate the child chromosomes
+            m_mutator.mutate(children);
+            yield();
+
+            // append children to survivors and replace existing population form combined vector
+            survivors.insert(survivors.end(),children.begin(),children.end());
+            m_population = survivors;
+            yield();
+        }
+        else
+        {
+            m_listener.run_complete(m_population);
+        }
+
+        return keep_going;
+>>>>>>> version 4.0.2
     }
 };
 

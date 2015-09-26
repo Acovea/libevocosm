@@ -1,3 +1,4 @@
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
 //---------------------------------------------------------------------
 //  Algorithmic Conjurings @ http://www.coyotegulch.com
 //  Evocosm -- An Object-Oriented Framework for Evolutionary Algorithms
@@ -31,6 +32,59 @@
 //      http://www.coyotegulch.com
 //  
 //-----------------------------------------------------------------------
+=======
+/*
+    Evocosm is a C++ framework for implementing evolutionary algorithms.
+
+    Copyright 2011 Scott Robert Ladd. All rights reserved.
+
+    Evocosm is user-supported open source software. Its continued development is dependent
+    on financial support from the community. You can provide funding by visiting the Evocosm
+    website at:
+
+        http://www.coyotegulch.com
+
+    You may license Evocosm in one of two fashions:
+
+    1) Simplified BSD License (FreeBSD License)
+
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+
+    1.  Redistributions of source code must retain the above copyright notice, this list of
+        conditions and the following disclaimer.
+
+    2.  Redistributions in binary form must reproduce the above copyright notice, this list
+        of conditions and the following disclaimer in the documentation and/or other materials
+        provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY SCOTT ROBERT LADD ``AS IS'' AND ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+    FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SCOTT ROBERT LADD OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those of the
+    authors and should not be interpreted as representing official policies, either expressed
+    or implied, of Scott Robert Ladd.
+
+    2) Closed-Source Proprietary License
+
+    If your project is a closed-source or proprietary project, the Simplified BSD License may
+    not be appropriate or desirable. In such cases, contact the Evocosm copyright holder to
+    arrange your purchase of an appropriate license.
+
+    The author can be contacted at:
+
+          scott.ladd@coyotegulch.com
+          scott.ladd@gmail.com
+          http:www.coyotegulch.com
+*/
+>>>>>>> version 4.0.2
 
 #if !defined(EVOCOSM_SELECTOR_H)
 #define EVOCOSM_SELECTOR_H
@@ -105,7 +159,37 @@ namespace libevocosm
         }
     };
 
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     //! Implements a elitism selector 
+=======
+    //! A do-nothing selector
+    /*!
+        The all_selector returns a copy of the original population, all organisms survive.
+        This is primarily used for development and testing, and is of little practical use.
+        \param OrganismType - The type of organism
+    */
+    template <class OrganismType>
+    class all_selector : public selector<OrganismType>
+    {
+    public:
+        // Do-nothing selection function
+        /*!
+            Has no effect on the target population.
+            \param a_population - A population of organisms
+        */
+        virtual vector<OrganismType> select_survivors(vector<OrganismType> & a_population)
+        {
+            vector<OrganismType> result;
+
+            for (int n = 0; n < a_population.size(); ++n)
+                result.push_back(a_population[n]);
+
+            return result;
+        }
+    };
+
+    //! Implements a elitism selector
+>>>>>>> version 4.0.2
     /*!
         Elitism is one of the simplest type of selection -- it simply says that
         the <i>n</i> best organisms will survive into the next generation.
@@ -119,10 +203,17 @@ namespace libevocosm
         /*!
             Constructs a new elistism_selector with a value that defines the number of
             organisms that should survive into the next generation.
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             \param a_how_many - The maximum number of survivors
         */
         elitism_selector(size_t a_how_many = 1)
             : m_how_many(a_how_many)
+=======
+            \param a_factor - Percentage of bets fitness required to surivive
+        */
+        elitism_selector(double a_factor = 0.9)
+            : m_factor(a_factor)
+>>>>>>> version 4.0.2
         {
             // nada
         }
@@ -133,7 +224,11 @@ namespace libevocosm
             \param a_source - The source object
         */
         elitism_selector(const elitism_selector<OrganismType> & a_source)
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             : m_how_many(a_source.how_many)
+=======
+            : m_factor(a_source.m_factor)
+>>>>>>> version 4.0.2
         {
             // nada
         }
@@ -145,7 +240,11 @@ namespace libevocosm
         */
         elitism_selector & operator = (const elitism_selector<OrganismType> & a_source)
         {
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             m_how_many = a_source.m_how_many;
+=======
+            m_factor = a_source.m_factor;
+>>>>>>> version 4.0.2
         }
 
         //! Select individuals that survive
@@ -159,7 +258,11 @@ namespace libevocosm
 
     private:
         // number of organisms to keep
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
         size_t m_how_many;
+=======
+        double m_factor;
+>>>>>>> version 4.0.2
     };
 
     template <class OrganismType>
@@ -167,6 +270,7 @@ namespace libevocosm
     {
         // create a new vector
         vector<OrganismType> chosen_ones;
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
             
         if (m_how_many > 0)
         {
@@ -191,6 +295,20 @@ namespace libevocosm
                     chosen_ones.pop_back();
             }
             
+=======
+
+        // get population stats
+        fitness_stats<OrganismType> stats(a_population);
+
+        // calculate survival based on percentage of best fitness
+        double threshold = m_factor * stats.getBest().fitness;
+
+        // pick survivors
+        for (int n = 0; n < a_population.size(); ++n)
+        {
+            if (a_population[n].fitness > threshold)
+                chosen_ones.push_back(a_population[n]);
+>>>>>>> version 4.0.2
         }
 
         // return result

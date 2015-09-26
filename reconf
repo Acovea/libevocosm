@@ -12,5 +12,9 @@ aclocal 2> /dev/null
 libtoolize --force
 automake --foreign --copy --add-missing
 autoconf
+<<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
+=======
+./configure
+>>>>>>> version 4.0.2
 #
 #-- end
