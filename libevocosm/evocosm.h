@@ -129,6 +129,8 @@
 #include "selector.h"
 #include "analyzer.h"
 
+
+using std::vector;
 //! A toolkit and framework for implementing evolutionary algorithms.
 /*!
     Evocosm classes abstract the fundamental components of an
@@ -142,6 +144,7 @@
 */
 namespace libevocosm
 {
+<<<<<<< e7caf0e4b99c29c75c9f17818cced7ecdcc9b5c0
     using std::vector;
 <<<<<<< 53bb9b38239f0b6fb908619d97286ae529277d0b
     
@@ -185,6 +188,8 @@ namespace libevocosm
     };
 =======
 >>>>>>> version 4.0.2
+=======
+>>>>>>> Fix using problem
 
     //! Associates organisms with the components of an evolutionary system.
     /*!
