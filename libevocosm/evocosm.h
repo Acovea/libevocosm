@@ -91,6 +91,8 @@
 
 #if defined(_MSC_VER)
 #pragma warning (disable : 4786)
+#else
+   #include <unistd.h>
 #endif
 
 #if defined(_OPENMP)
