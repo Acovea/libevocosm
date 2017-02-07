@@ -1,0 +1,133 @@
+-----------------------------------------------------------------
+Evocosm  
+
+A C++ Framework for Evolutionary and Genetic Computation
+-----------------------------------------------------------------
+
+  version 4.1, released 9 November 2005
+
+  homepage: http://www.coyotegulch.com/products/evocosm/index.html
+   contact: scott.ladd@coyotegulch.com
+
+  Copyright 2002, 2003, 2004, 2005 Scott Robert Ladd.
+  All rights reserved.
+            
+-----------------------------------------------------------------
+
+Evocosm is a set of classes that abstract the fundamental
+components of an evolutionary algorithm. I'll list the components
+here with a bit of introduction; you can review the details of
+the classes by reviewing the code or the ocumentation
+
+All class documentation was generated from source code comments
+using doxygen. These docs have not been thoroughly proofread, so
+they may contain a few typos and minor errors. Self-publishing
+has taught me the value of a good proofreader... ;}
+
+Evolutionary algorithms come in a variety of shapes and flavors,
+but at their core, they all share certain characteristics:
+populations that reproduce and mutate through a series of
+generations, producing future generations based on some measure
+of fitness. An amazing variety of algorithms can be built on that
+general framework, which leads me to construct a set of core
+classes as the basis for future applications. 
+
+The classes include:
+
+    * Roulette Wheels
+      The roulette_wheel class implements the concept of a 
+      "software roulette wheel" for Evocosm. This is a tool
+      for natural selection, wherein the fitness of an organism
+      determines the width of its "slot" on an imaginary
+      roulette wheel.
+      
+    * Organisms
+      Think of an "organism" as an answer to a problem posed
+      by a fitness landscape; "genes" define its behavior and
+      an associated fitness value is assigned by an evocosm
+      during testing. Evocosm provides the freedom to define
+      organisms as almost anything: bit strings, floating-point
+      numbers, finite state machines, LISP programs, or external
+      robots controlled via radio waves. In Acovea
+      (http://www.coyotegulch.com/products/acovea), I use an
+      Evocosm-derived GA to determine the GCC compiler options that
+      produce the fastest code for a given algorithm.
+      
+    * Fitness Landscapes
+      A "fitness landscape" defines the environment where
+      organisms "live" or a problem that they are tested against.
+      The landscape is intimately tied to the nature of the
+      organism; think of an organism as a potential solution
+      to a problem implemented by the landscape. A floating-point
+      organism, for example, could be tested by a fitness
+      landscape that represents a function to be maximized. Or,
+      an organism describing the shape of wing could be tested by
+      a landscape that simulates a wind tunnel.
+      
+    * Evocosms
+      The evocosm class binds a population of organisms to a set
+      of objects that define the rules of survival and reproduction.
+      An evocosm will have one or more populations, which will
+      evolve against population-unique and shared (common) fitness
+      landscapes; breeding is controlled by a set of class objects
+      from the following classes.
+      
+    * Fitness Scaling
+      As a population converges on an "answer", the difference
+      between fitness values often becomes very small; this prevents
+      the best solutions from having a significant advantage in
+      reproduction. Fitness scaling solves this problem by adjusting
+      the fitness values to the advantage of the most-fit chromosomes.
+      Evocosm includes a variety of fitness scaling algorithms.
+      
+    * Migration
+      A migrator removes individuals (via "emigration") from a
+      population of organisms, transferring them to another population
+      (via "immigration"). The only concrete implementation of this
+      interface is random_pool_migrator, which defines a specific
+      number of organisms that may migrate from each population to
+      another. When creating a random_pool_migrator, specify the
+      number of organisms that can migrate from each population.
+      Migration is, of course, meaningless in any application that
+      has only one population.
+      
+    * Selecting Survivors
+      A selector decides which organisms survive from one generation
+      to the next. Some evolutionary algorithms will not use a
+      selector; other will. In general, it is effective to keep the
+      "best" organisms from one generation to the next, so that
+      good genes do not become lost at random. This is, of course, an
+      improvement on nature, where being "the best" doesn't guarantee
+      survival.
+      
+    * Reproduction
+      In most cases, a reproducer generates new organisms using
+      parents selected (by fitness) from an existing population. In
+      some singular (and probably rare) cases, a reproducer might
+      generate new, random organisms in order to keep diversity high.
+      Reproduction techniques can include crossover and asexual,
+      sexual and (my favorite) try-sexual models.
+      
+    * Mutation Operators
+      A mutator applies mutations (random, usually small changes)
+      to a set of organisms. Mutation is highly dependent on the
+      type of organism. In traditional genetic algorithms, a
+      mutation flips one or more bits in an integer (i.e.,
+      chromosome). Evolving a path for the Traveling Salesman
+      Problem involves complex mutations that maintain valid
+      permutations of destination points; in the case of
+      floating-point numbers, I've provided utilities for mutating
+      and crossing IEC-60559 (IEEE- 754) float and double types.
+
+    * Floating- Point Chromosomes
+      Evcosom supports the crossover and mutation of IEEE-754
+      floating-point numbers, using an algorithm I invented in
+      the mid-1990s. This topic is covered in detail here.
+      
+    * Random Numbers
+      Evocosm relies on the code in Marsenne Twister Road for
+      random number generation.  The Mersenne Twister algorithm
+      is particularly well-suited to evolutionary algorithms,
+      based on its long period,  granularity, "randomness",
+      and speed.
+      

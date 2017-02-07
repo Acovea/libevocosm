@@ -1,0 +1,5 @@
+13 January 2004
+    The conversion of libevocosm to the GNU "autotools" is complete.
+    
+    Also, the program is now licensed under the GPL by default; a
+    commercial license is also available.

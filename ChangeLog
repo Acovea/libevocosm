@@ -1,0 +1,312 @@
+2004-06-11 16:50  scott
+
+	* libevocosm/roulette.h: Change default high and low ranges for
+	  weights to use numeric_limits<>
+
+2004-06-11 16:50  scott
+
+	* install-sh, missing, mkinstalldirs, reconf: Removed spruious
+	  files from CVS Cleaned up reconf script
+
+2004-06-11 15:26  scott
+
+	* libevocosm/roulette.h: Minor clean-up
+
+2004-05-28 09:14  scott
+
+	* funcopt/funcopt.h: Fixed various pedantic warnings
+
+2004-05-08 00:06  scott
+
+	* config.guess, config.sub: Removed spurious files
+
+2004-05-08 00:05  scott
+
+	* config.guess, config.sub: These files shouldn't be in CVS!
+
+2004-03-19 10:15  scott
+
+	* ChangeLog: Added ChangeLog to CVS
+
+2004-03-19 10:13  scott
+
+	* configure.ac, libevocosm/evocommon.cpp: Updated to version 2.5.2
+
+2004-03-19 09:52  scott
+
+	* funcopt/Makefile.am, libevocosm/Makefile.am: Removed explicit
+	  setting of CXXFLAGS
+
+2004-03-19 09:51  scott
+
+	* reconf: Added call to libtoolize
+
+2004-03-19 09:45  scott
+
+	* ltmain.sh: Removed spurious ltmain.sh script
+
+2004-03-17 18:48  scott
+
+	* libevocosm/: evocommon.cpp, evocommon.h, evocosm.h, evoreal.cpp,
+	  evoreal.h, fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h,
+	  migrator.h, mutator.h, organism.h, reporter.h, reproducer.h,
+	  roulette.cpp, roulette.h, scaler.h, selector.h, simple_fsm.h:
+	  Changes made to includes
+
+2004-03-17 18:42  scott
+
+	* libevocosm/: evocommon.cpp, evocosm.h, evoreal.cpp, evoreal.h,
+	  fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h, migrator.h,
+	  mutator.h, organism.h, reporter.h, reproducer.h, roulette.cpp,
+	  roulette.h, scaler.h, selector.h, simple_fsm.h: Fixed directory
+	  problem with including evocosm headers
+
+2004-01-15 19:51  scott
+
+	* libevocosm/: Makefile.am, evocommon.cpp, evocommon.h, evocosm.h,
+	  evoreal.cpp, evoreal.h, fsm.h, fsm_tools.h, fuzzy_machine.h,
+	  landscape.h, migrator.h, mutator.h, organism.h, reporter.h,
+	  reproducer.h, roulette.cpp, roulette.h, scaler.h, selector.h,
+	  simple_fsm.h: Removed unnecessary compile-time defines Set
+	  CXXFLAGS to -O3
+
+2004-01-15 19:50  scott
+
+	* funcopt/: Makefile.am, ecopt.cpp, runfuncopt.cpp: Renamed ecopt
+	  to runfuncopt
+
+2004-01-15 19:50  scott
+
+	* configure.ac: Fixed trivial bugs
+
+2004-01-15 19:31  scott
+
+	* COPYING: Added COPYING file
+
+2004-01-15 19:31  scott
+
+	* configure.ac, funcopt/Makefile.am: Fixed bugs found during
+	  initial reconf
+
+2004-01-15 19:28  scott
+
+	* configure.ac, funcopt/Makefile.am, funcopt/funcopt.cpp,
+	  funcopt/funcopt.h, libevocosm/Makefile.am: Revisions for new
+	  configuration
+
+2004-01-15 19:21  scott
+
+	* AUTHORS, INSTALL, LICENSE.COMMERCIAL, LICENSE.GPL,
+	  LICENSE.POLICY, Makefile, Makefile.am, NEWS, README,
+	  config.guess, config.sub, configure.ac, evocommon.cpp,
+	  evocommon.h, evocosm.h, evocosm_footer.html, evocosm_header.html,
+	  evoreal.cpp, evoreal.h, fsm.h, fsm_tools.h, fuzzy_machine.h,
+	  install-sh, landscape.h, libevocosm.doxygen, libevocosm.pc.in,
+	  ltmain.sh, migrator.h, missing, mkinstalldirs, mutator.h,
+	  organism.h, reconf, reporter.h, reproducer.h, roulette.cpp,
+	  roulette.h, scaler.h, selector.h, simple_fsm.h, svfl.txt,
+	  doc/evocosm_footer.html, doc/evocosm_header.html,
+	  doc/funcopt.doxygen, doc/funcopt_footer.html,
+	  doc/funcopt_header.html, doc/libevocosm.doxygen,
+	  funcopt/Makefile.am, funcopt/ecopt.cpp, funcopt/funcopt.cpp,
+	  funcopt/funcopt.h, libevocosm/Makefile.am,
+	  libevocosm/evocommon.cpp, libevocosm/evocommon.h,
+	  libevocosm/evocosm.h, libevocosm/evoreal.cpp,
+	  libevocosm/evoreal.h, libevocosm/fsm.h, libevocosm/fsm_tools.h,
+	  libevocosm/fuzzy_machine.h, libevocosm/landscape.h,
+	  libevocosm/migrator.h, libevocosm/mutator.h,
+	  libevocosm/organism.h, libevocosm/reporter.h,
+	  libevocosm/reproducer.h, libevocosm/roulette.cpp,
+	  libevocosm/roulette.h, libevocosm/scaler.h,
+	  libevocosm/selector.h, libevocosm/simple_fsm.h,
+	  obsolete/Makefile: Reorganized code for GNU auto tools
+
+2004-01-13 19:20  scott
+
+	* evocommon.cpp, evocommon.h, evocosm.h, evoreal.cpp, evoreal.h,
+	  fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h, migrator.h,
+	  mutator.h, organism.h, reporter.h, reproducer.h, roulette.cpp,
+	  roulette.h, scaler.h, selector.h, simple_fsm.h: Updated copyright
+	  messages for 2004
+
+2004-01-13 19:17  scott
+
+	* Makefile, evocommon.cpp, evocommon.h: Reflect change in libcoyote
+	  name from mtprng to mtwister Intel and GNU now produce the same
+	  library name
+
+2003-12-03 13:37  scott
+
+	* Makefile.sparc: UltraSparc makefile added
+
+2003-10-20 15:51  scott
+
+	* Makefile, Makefile.P3, README, evocommon.cpp: Combines and
+	  simplified Makefile Updated README Updated version to 2.5.0
+
+2003-10-14 23:16  scott
+
+	* evocommon.cpp, evocommon.h, evocosm.h: Removed extraneous
+	  semicolons
+
+2003-10-13 16:54  scott
+
+	* Makefile: Updated Makefile to fdifferentiate between gcc and icc
+	  libraries Makefile no longer removes libraries on clean
+
+2003-08-08 13:21  scott
+
+	* evocommon.cpp, evocosm.h, libevocosm.doxygen, migrator.h: Minor
+	  changes to reflect gcc 3.4 prerelease
+
+2003-07-02 15:23  scott
+
+	* Makefile.P3: Minor Makefile changes
+
+2003-07-02 15:22  scott
+
+	* evocommon.cpp, evocosm.h: Fixed minor pedantic warnings
+
+2003-06-25 10:26  scott
+
+	* evocommon.cpp: Updated version number
+
+2003-06-25 10:24  scott
+
+	* simple_fsm.h: Mutation is no longer allows old value to be
+	  replaced by itself
+
+2003-06-24 09:53  scott
+
+	* Makefile.386, Makefile.P3: Change erroneous Makefile name for
+	  Pentium 3
+
+2003-06-23 23:07  scott
+
+	* evocosm.h, fuzzy_machine.h: Fixed a major bug in "replace state"
+	  mutation for fuzzy state machines
+
+2003-06-23 18:27  scott
+
+	* evocommon.cpp, evocosm.h: Parallelized (OpenMP) run_generation
+	  method
+
+2003-06-22 20:26  scott
+
+	* evocommon.cpp: Updated version to 2.3.7
+
+2003-06-22 20:23  scott
+
+	* Makefile, landscape.h: Fixed const problem with test functions in
+	  landscape template
+
+2003-03-23 11:05  scott
+
+	* evocosm.h: Bug fixes Comment fixes
+
+2003-03-23 09:34  scott
+
+	* evocosm.h: Bug fixes
+
+2003-03-23 09:27  scott
+
+	* evocommon.cpp, evocosm.h: Added append method to organism factory
+	  Updated version number
+
+2003-03-21 17:43  scott
+
+	* evocommon.cpp: Updated version number constant to 2.3.5
+
+2003-03-20 08:51  scott
+
+	* evocosm.h, scaler.h: Fixed bug in windowed scaler (used max
+	  instead of min! -- duh!)
+
+2003-03-18 20:41  scott
+
+	* scaler.h: Fixed weird bug with extra "sigma" text in seemingly
+	  random places
+
+2003-03-16 20:35  scott
+
+	* evocosm_footer.html, evocosm_header.html: Fixed version number
+	  bugs in HTML header and footer
+
+2003-03-15 22:34  scott
+
+	* evocosm.h, evoreal.h, fsm.h, fuzzy_machine.h, migrator.h,
+	  organism.h, roulette.cpp, roulette.h, selector.h, simple_fsm.h:
+	  Updated comments to match implementation Modified more copyright
+	  date errors Correct documentation errors
+
+2003-03-15 21:34  scott
+
+	* evocosm.h, landscape.h, reporter.h, scaler.h: Added missing
+	  test(organism) function to landscape Updated some comments
+
+2003-03-06 09:54  scott
+
+	* evocommon.cpp, evocosm.h, reporter.h, scaler.h: Began version
+	  2.3.4 Added invert operation to base scaler class Added
+	  minimizing flag to evocosm class and constructor
+
+2003-02-09 19:19  scott
+
+	* evocommon.cpp: Increased version number to 2.3.3
+
+2003-02-09 18:49  scott
+
+	* fsm.h, fsm_tools.h, fuzzy_machine.h, simple_fsm.h: Added "replace
+	  state" mutation to finite and fuzzy state machines
+
+2003-01-29 19:18  scott
+
+	* landscape.h: Modified landscape.test to return a fitness value
+
+2003-01-27 17:59  scott
+
+	* evocommon.cpp, evocosm.h: Fixed incorrect version number in
+	  evocommon Updated comments (still not finished)
+
+2003-01-27 17:56  scott
+
+	* evocosm.h, fuzzy_machine.h, simple_fsm.h: Changed fuzzy_machine
+	  to use one-point crossover (prev. was random) Changed simple_fsm
+	  to use one-point crossover (prev. was random) Minor aethetic and
+	  bug fixes
+
+2003-01-26 21:11  scott
+
+	* Makefile, evocommon.cpp, evocommon.h, evocosm.h, evoreal.cpp,
+	  evoreal.h, fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h,
+	  migrator.h, mutator.h, organism.h, reporter.h, reproducer.h,
+	  roulette.cpp, roulette.h, scaler.h, selector.h, simple_fsm.h:
+	  Updated copyright statements Added "crossover constructor" to
+	  organism Fixed several bugs in fuzzy machine
+
+2003-01-16 14:51  scott
+
+	* Makefile.386: Added Makefile for Pentium 3
+
+2003-01-15 20:06  scott
+
+	* evocosm.h, selector.h: changed back to left/ahead/right movement
+
+2003-01-13 19:15  scott
+
+	* Makefile, README, evocommon.cpp, evocommon.h, evocosm.h,
+	  evocosm_footer.html, evocosm_header.html, evoreal.cpp, evoreal.h,
+	  fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h,
+	  libevocosm.doxygen, migrator.h, mutator.h, organism.h,
+	  reporter.h, reproducer.h, roulette.cpp, roulette.h, scaler.h,
+	  selector.h, simple_fsm.h, svfl.txt: Initial libevocosm import
+
+2003-01-13 19:15  scott
+
+	* Makefile, README, evocommon.cpp, evocommon.h, evocosm.h,
+	  evocosm_footer.html, evocosm_header.html, evoreal.cpp, evoreal.h,
+	  fsm.h, fsm_tools.h, fuzzy_machine.h, landscape.h,
+	  libevocosm.doxygen, migrator.h, mutator.h, organism.h,
+	  reporter.h, reproducer.h, roulette.cpp, roulette.h, scaler.h,
+	  selector.h, simple_fsm.h, svfl.txt: Initial revision
+

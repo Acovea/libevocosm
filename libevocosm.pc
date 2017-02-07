@@ -1,0 +1,13 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libevocosm
+Description: A framew3ork for evolutionary algorithms
+Author: Scott Robert Ladd
+URL: http://www.coyotegulch.com/libevocosm
+Version: 3.1.0
+Libs: -L${libdir} -l@GENERIC_LIBRARY_NAME
+Cflags: -I${includedir}/libevocosm -I${libdir}/libevocosm/include
+
